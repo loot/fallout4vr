@@ -378,7 +378,7 @@ globals:
     subs:
       - 'Fallout 4 Script Extender'
       - '[F4SE](https://f4se.silverlock.org)'
-    condition: 'not file("scripts/F4SE.pex") and ((file("../Fallout4.exe") and file("../f4se_loader.exe")) or (file("../Fallout4VR.exe") and file("../f4sevr_loader.exe")))'
+    condition: 'not file("scripts/F4SE.pex") and file("../f4sevr_loader.exe")'
 
 # Fallout 4 VR - Latest Version
   - <<: *versionOldX
