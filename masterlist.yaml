@@ -346,11 +346,6 @@ common:
     condition: 'not active("DLCNukaWorld.esm")'
 
   # &versionXIncY
-  - &versionF4SEIncFO4
-    <<: *versionXIncY
-    subs:
-      - '**[Fallout 4 Script Extender](https://f4se.silverlock.org)**'
-      - '**Fallout 4**'
   - &versionF4SEIncFO4_VR
     <<: *versionXIncY
     subs:
