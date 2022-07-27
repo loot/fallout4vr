@@ -4566,16 +4566,7 @@ plugins:
 
   - name: 'BuildingBlocks.*\.es(p|m)'
     url: [ 'https://www.nexusmods.com/fallout4/mods/8907/' ]
-  - name: 'BuildingBlocks-Foundations.esp'
-    inc:
-      - name: '../Fallout4.exe'
-        display: 'Fallout 4 1.5.157.0+'
-        condition: 'version("../Fallout4.exe", "1.5.157.0", >=)'
   - name: 'BuildingBlocks-Foundations_Homemaker.*\.esp'
-    inc:
-      - name: '../Fallout4.exe'
-        display: 'Fallout 4 1.5.157.0+'
-        condition: 'version("../Fallout4.exe", "1.5.157.0", >=)'
     msg:
       - <<: *alreadyInOrFixedByX
         subs: [ 'Homemaker 1.50 or greater' ]
@@ -4588,9 +4579,6 @@ plugins:
         condition: 'version("SettlementKeywords.esm", "1.0", >=)'
   - name: 'BuildingBlocks-Foundations_SettlementKeywordsPartial.esp'
     inc:
-      - name: '../Fallout4.exe'
-        display: 'Fallout 4 1.5.157.0+'
-        condition: 'version("../Fallout4.exe", "1.5.157.0", >=)'
       - name: 'SettlementKeywords.esm'
         display: 'Settlement Keywords Expanded'
         condition: 'version("SettlementKeywords.esm", "1.0", >=)'
