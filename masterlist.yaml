@@ -219,25 +219,21 @@ prelude:
       type: error
       content: 'You have installed an %1% plugin but %1% was not found! See %1% download page: %2%.'
       subs:
-        - 'F4SE'
-        - '[F4SE](https://f4se.silverlock.org)'
-      condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4se(vr)?_loader\.exe")'
+        - 'F4SE VR'
+        - '[F4SE VR](https://f4se.silverlock.org)'
+      condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4sevr_loader.exe")'
 
     - &scriptExtenderRequiredScripts
       type: warn
       content: 'It appears you have installed **%1%**, but its required scripts seem to be missing. Please ensure you have correctly installed the scripts bundled with the **%2%** installation archive.'
       subs:
-        - 'Fallout 4 Script Extender'
-        - '[F4SE](https://f4se.silverlock.org)'
-      condition: 'not file("scripts/F4SE.pex") and ((file("../Fallout4.exe") and file("../f4se_loader.exe")) or (file("../Fallout4VR.exe") and file("../f4sevr_loader.exe")))'
+        - 'Fallout 4 Script Extender VR'
+        - '[F4SE VR](https://f4se.silverlock.org)'
+      condition: 'not file("scripts/F4SE.pex") and file("../f4sevr_loader.exe")'
 
 common:
 # File Anchors
   - &F4SE
-    name: '../f4se_loader.exe'
-    display: '[F4SE](https://f4se.silverlock.org)'
-
-  - &F4SE_VR
     name: '../f4sevr_loader.exe'
     display: '[F4SE VR](https://f4se.silverlock.org)'
 
@@ -264,14 +260,6 @@ common:
   - &alreadyInOrFixedByFO4
     <<: *alreadyInOrFixedByX
     subs: [ 'Fallout 4' ]
-  - &alreadyInOrFixedByFO4v1_3_47
-    <<: *alreadyInOrFixedByX
-    subs: [ 'Fallout 4 v1.3.47.0' ]
-    condition: 'version("../Fallout4.exe", "1.3.47.0", >=)'
-  - &alreadyInOrFixedByFO4v1_4_132
-    <<: *alreadyInOrFixedByX
-    subs: [ 'Fallout 4 v1.4.132.0' ]
-    condition: 'version("../Fallout4.exe", "1.4.132.0", >=)'
   - &alreadyInOrFixedByFCF
     <<: *alreadyInOrFixedByX
     subs: [ 'FROST Cell Fixes' ]
@@ -346,15 +334,10 @@ common:
     condition: 'not active("DLCNukaWorld.esm")'
 
   # &versionXIncY
-  - &versionF4SEIncFO4
-    <<: *versionXIncY
-    subs:
-      - '**[Fallout 4 Script Extender](https://f4se.silverlock.org)**'
-      - '**Fallout 4**'
   - &versionF4SEIncFO4_VR
     <<: *versionXIncY
     subs:
-      - '**[Fallout 4 VR Script Extender](https://f4se.silverlock.org)**'
+      - '**[Fallout 4 Script Extender VR](https://f4se.silverlock.org)**'
       - '**Fallout 4 VR**'
 
 bash_tags:
@@ -378,24 +361,17 @@ globals:
   # Missing
   - <<: *scriptExtenderMissing
     subs:
-      - 'F4SE'
-      - '[F4SE](https://f4se.silverlock.org)'
-    condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4se(vr)?_loader\.exe")'
+      - 'F4SE VR'
+      - '[F4SE VR](https://f4se.silverlock.org)'
+    condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4sevr_loader.exe")'
 
   # Required Scripts
   - <<: *scriptExtenderRequiredScripts
     subs:
-      - 'Fallout 4 Script Extender'
-      - '[F4SE](https://f4se.silverlock.org)'
-    condition: 'not file("scripts/F4SE.pex") and ((file("../Fallout4.exe") and file("../f4se_loader.exe")) or (file("../Fallout4VR.exe") and file("../f4sevr_loader.exe")))'
+      - 'Fallout 4 Script Extender VR'
+      - '[F4SE VR](https://f4se.silverlock.org)'
+    condition: 'not file("scripts/F4SE.pex") and file("../f4sevr_loader.exe")'
 
-# Fallout 4 - Latest Version
-  - <<: *versionOldX
-    subs: [ '**Fallout 4**' ]
-    condition: 'version("../Fallout4.exe", "1.10.163.0", <) and file("../Fallout4.exe")'
-  - <<: *versionUpToDateX
-    subs: [ '**Fallout 4**' ]
-    condition: 'version("../Fallout4.exe", "1.10.163.0", >=) and file("../Fallout4.exe")'
 # Fallout 4 VR - Latest Version
   - <<: *versionOldX
     subs: [ '**Fallout 4 VR**' ]
@@ -404,13 +380,6 @@ globals:
     subs: [ '**Fallout 4 VR**' ]
     condition: 'version("../Fallout4VR.exe", "1.2.72.0", >=) and file("../Fallout4VR.exe")'
 
-# F4SE - Latest Version
-  - <<: *versionOldX
-    subs: [ '**Script Extender ([F4SE](https://f4se.silverlock.org))**' ]
-    condition: 'version("../f4se_loader.exe", "0.0.6.23", <) and file("../Fallout4.exe") and file("../f4se_loader.exe")'
-  - <<: *versionUpToDateX
-    subs: [ '**Script Extender ([F4SE](https://f4se.silverlock.org))**' ]
-    condition: 'version("../f4se_loader.exe", "0.0.6.23", >=) and file("../Fallout4.exe") and file("../f4se_loader.exe")'
 # F4SE VR - Latest Version
   - <<: *versionOldX
     subs: [ '**Script Extender ([F4SE VR](https://f4se.silverlock.org))**' ]
@@ -419,31 +388,9 @@ globals:
     subs: [ '**Script Extender ([F4SE VR](https://f4se.silverlock.org))**' ]
     condition: 'version("../f4sevr_loader.exe", "0.0.6.20", >=) and file("../Fallout4VR.exe") and file("../f4sevr_loader.exe")'
 
-# F4SE - Runtime Compatibility
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.163.0", ==) and version("../f4se_loader.exe", "0.0.6.20", <) and file("../f4se_loader.exe")'
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.162.0", ==) and version("../f4se_loader.exe", "0.0.6.18", <) and file("../f4se_loader.exe")'
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.138.0", ==) and version("../f4se_loader.exe", "0.0.6.17", <) and file("../f4se_loader.exe")'
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.130.0", ==) and version("../f4se_loader.exe", "0.0.6.16", <) and file("../f4se_loader.exe")'
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.120.0", ==) and version("../f4se_loader.exe", "0.0.6.14", <) and file("../f4se_loader.exe")'
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.114.0", ==) and not version("../f4se_loader.exe", "0.0.6.13", ==) and file("../f4se_loader.exe")'
-  - <<: *versionF4SEIncFO4
-    condition: 'version("../Fallout4.exe", "1.10.111.0", ==) and not version("../f4se_loader.exe", "0.0.6.12", ==) and file("../f4se_loader.exe")'
 # F4SE VR - Runtime Compatibility
   - <<: *versionF4SEIncFO4_VR
     condition: 'version("../Fallout4VR.exe", "1.2.72.0", ==) and version("../f4sevr_loader.exe", "0.0.6.20", <) and file("../f4sevr_loader.exe")'
-
-# F4SE Plugins - Compatibility
-  - <<: *versionXIncY
-    subs:
-      - '**[Place Everywhere](https://www.nexusmods.com/fallout4/mods/9424)**'
-      - 'Fallout 4'
-    condition: 'file("F4SE/Plugins/place.dll") and file("../f4se_loader.exe") and ((version("F4SE/Plugins/place.dll", "1.18.0.1163", ==) and version("../Fallout4.exe", "1.10.163.0", !=)) or (version("F4SE/Plugins/place.dll", "1.18.0.1163", <) and version("../Fallout4.exe", "1.10.163.0", ==)))'
 
 groups:
   - name: &dlcGroup DLC
@@ -1501,14 +1448,6 @@ plugins:
       - link: 'https://www.nexusmods.com/fallout4/mods/4598/'
         name: 'Unofficial Fallout 4 Patch (Nexus Mods)'
     group: *fixesGroup
-    msg:
-      - <<: *obsolete
-        condition: 'version("Unofficial Fallout 4 Patch.esp", "2.1.3", <)'
-      - <<: *versionXIncY
-        subs:
-          - 'Unofficial Fallout 4 Patch'
-          - 'Fallout 4'
-        condition: 'version("Unofficial Fallout 4 Patch.esp", "2.1.0", >=) and not version("../Fallout4.exe", "1.10.162.0", >=)'
     tag: [ Relev ]
     clean:
       - crc: 0xFA6E14DD
@@ -1568,7 +1507,7 @@ plugins:
     msg:
       - <<: *missingRequirementXforPlugin
         subs: [ '[Address Library for F4SE Plugins](https://www.nexusmods.com/fallout4/mods/47327/)' ]
-        condition: '(not file("F4SE/Plugins/version-1-10-130-0.bin") and version("../Fallout4.exe", "1.10.130.0", ==)) or (not file("F4SE/Plugins/version-1-10-138-0.bin") and version("../Fallout4.exe", "1.10.138.0", ==)) or (not file("F4SE/Plugins/version-1-10-162-0.bin") and version("../Fallout4.exe", "1.10.162.0", ==)) or (not file("F4SE/Plugins/version-1-10-163-0.bin") and version("../Fallout4.exe", "1.10.163.0", ==))'
+        condition: 'not file("F4SE/Plugins/version-1-2-72-0.bin") and version("../Fallout4VR.exe", "1.2.72.0", ==)'
     clean:
       - crc: 0xE0F570D6
         util: 'FO4Edit v4.0.3h (Hotfix 1)'
@@ -1731,7 +1670,6 @@ plugins:
   - name: 'KillshotFix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/1282/' ]
     group: *fixesGroup
-    msg: [ *alreadyInOrFixedByFO4v1_3_47 ]
 
   - name: 'LiveNLoveMagazinePerkPatch.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/11083/' ]
@@ -1754,12 +1692,10 @@ plugins:
   - name: 'MakanarBigLeaguesFix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/6185/' ]
     group: *fixesGroup
-    msg: [ *alreadyInOrFixedByFO4v1_3_47 ]
 
   - name: 'MakanarPerkBigLeaguesFix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/5957/' ]
     group: *fixesGroup
-    msg: [ *alreadyInOrFixedByFO4v1_3_47 ]
 
   - name: 'Merchants stick with store - Unique Settlers.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/5343/' ]
@@ -1802,7 +1738,6 @@ plugins:
   - name: 'RailroadGloryBugFix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/6389/' ]
     group: *fixesGroup
-    msg: [ *alreadyInOrFixedByFO4v1_3_47 ]
 
   - name: 'Remove Rads in Survival Fix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/15392/' ]
@@ -1812,7 +1747,6 @@ plugins:
   - name: 'ScroungerFix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/3624/' ]
     group: *fixesGroup
-    msg: [ *alreadyInOrFixedByFO4v1_4_132 ]
 
   - name: 'SoldierToyFix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/10229/' ]
@@ -1832,9 +1766,6 @@ plugins:
   - name: 'Targeting HUD Berry Mentats Fix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/8910/' ]
     group: *fixesGroup
-    msg:
-      - <<: *alreadyInOrFixedByFO4
-        condition: 'version("../Fallout4.exe", "1.5.0.0", >=)'
 
   - name: 'Vault 111 Floor Guide Fix.esp'
     url:
@@ -4599,9 +4530,6 @@ plugins:
     msg:
       - <<: *obsolete
         condition: 'version("SettlementKeywords.esm", "1.60", <)'
-      - <<: *requiresX
-        subs: [ 'Fallout 4 1.6.3+' ]
-        condition: 'version("../Fallout4.exe", "1.6.3", <)'
 
   - name: 'AlternateSettlements.esp'
     msg:
@@ -4615,16 +4543,7 @@ plugins:
 
   - name: 'BuildingBlocks.*\.es(p|m)'
     url: [ 'https://www.nexusmods.com/fallout4/mods/8907/' ]
-  - name: 'BuildingBlocks-Foundations.esp'
-    inc:
-      - name: '../Fallout4.exe'
-        display: 'Fallout 4 1.5.157.0+'
-        condition: 'version("../Fallout4.exe", "1.5.157.0", >=)'
   - name: 'BuildingBlocks-Foundations_Homemaker.*\.esp'
-    inc:
-      - name: '../Fallout4.exe'
-        display: 'Fallout 4 1.5.157.0+'
-        condition: 'version("../Fallout4.exe", "1.5.157.0", >=)'
     msg:
       - <<: *alreadyInOrFixedByX
         subs: [ 'Homemaker 1.50 or greater' ]
@@ -4637,9 +4556,6 @@ plugins:
         condition: 'version("SettlementKeywords.esm", "1.0", >=)'
   - name: 'BuildingBlocks-Foundations_SettlementKeywordsPartial.esp'
     inc:
-      - name: '../Fallout4.exe'
-        display: 'Fallout 4 1.5.157.0+'
-        condition: 'version("../Fallout4.exe", "1.5.157.0", >=)'
       - name: 'SettlementKeywords.esm'
         display: 'Settlement Keywords Expanded'
         condition: 'version("SettlementKeywords.esm", "1.0", >=)'
