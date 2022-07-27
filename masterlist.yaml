@@ -395,11 +395,8 @@ globals:
 groups:
   - name: &dlcGroup DLC
 
-  - name: &ccGroup Creation Club
-    after: [ *dlcGroup ]
-
   - name: &texturesGroup Texture Overhauls
-    after: [ *ccGroup ]
+    after: [ *dlcGroup ]
 
   - name: &fixesGroup Fixes
     after: [ *texturesGroup ]
