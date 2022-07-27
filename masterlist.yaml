@@ -1786,9 +1786,6 @@ plugins:
   - name: 'Targeting HUD Berry Mentats Fix.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/8910/' ]
     group: *fixesGroup
-    msg:
-      - <<: *alreadyInOrFixedByFO4
-        condition: 'version("../Fallout4.exe", "1.5.0.0", >=)'
 
   - name: 'Vault 111 Floor Guide Fix.esp'
     url:
