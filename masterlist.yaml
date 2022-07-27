@@ -4553,9 +4553,6 @@ plugins:
     msg:
       - <<: *obsolete
         condition: 'version("SettlementKeywords.esm", "1.60", <)'
-      - <<: *requiresX
-        subs: [ 'Fallout 4 1.6.3+' ]
-        condition: 'version("../Fallout4.exe", "1.6.3", <)'
 
   - name: 'AlternateSettlements.esp'
     msg:
