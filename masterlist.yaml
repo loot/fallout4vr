@@ -234,10 +234,6 @@ prelude:
 common:
 # File Anchors
   - &F4SE
-    name: '../f4se_loader.exe'
-    display: '[F4SE](https://f4se.silverlock.org)'
-
-  - &F4SE_VR
     name: '../f4sevr_loader.exe'
     display: '[F4SE VR](https://f4se.silverlock.org)'
 
