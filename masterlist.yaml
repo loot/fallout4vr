@@ -219,16 +219,16 @@ prelude:
       type: error
       content: 'You have installed an %1% plugin but %1% was not found! See %1% download page: %2%.'
       subs:
-        - 'F4SE'
-        - '[F4SE](https://f4se.silverlock.org)'
+        - 'F4SE VR'
+        - '[F4SE VR](https://f4se.silverlock.org)'
       condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4sevr_loader.exe")'
 
     - &scriptExtenderRequiredScripts
       type: warn
       content: 'It appears you have installed **%1%**, but its required scripts seem to be missing. Please ensure you have correctly installed the scripts bundled with the **%2%** installation archive.'
       subs:
-        - 'Fallout 4 Script Extender'
-        - '[F4SE](https://f4se.silverlock.org)'
+        - 'Fallout 4 Script Extender VR'
+        - '[F4SE VR](https://f4se.silverlock.org)'
       condition: 'not file("scripts/F4SE.pex") and file("../f4sevr_loader.exe")'
 
 common:
@@ -345,7 +345,7 @@ common:
   - &versionF4SEIncFO4_VR
     <<: *versionXIncY
     subs:
-      - '**[Fallout 4 VR Script Extender](https://f4se.silverlock.org)**'
+      - '**[Fallout 4 Script Extender VR](https://f4se.silverlock.org)**'
       - '**Fallout 4 VR**'
 
 bash_tags:
@@ -369,15 +369,15 @@ globals:
   # Missing
   - <<: *scriptExtenderMissing
     subs:
-      - 'F4SE'
-      - '[F4SE](https://f4se.silverlock.org)'
+      - 'F4SE VR'
+      - '[F4SE VR](https://f4se.silverlock.org)'
     condition: 'file("F4SE/Plugins/([^\.]+\.dll)") and not file("../f4sevr_loader.exe")'
 
   # Required Scripts
   - <<: *scriptExtenderRequiredScripts
     subs:
-      - 'Fallout 4 Script Extender'
-      - '[F4SE](https://f4se.silverlock.org)'
+      - 'Fallout 4 Script Extender VR'
+      - '[F4SE VR](https://f4se.silverlock.org)'
     condition: 'not file("scripts/F4SE.pex") and file("../f4sevr_loader.exe")'
 
 # Fallout 4 VR - Latest Version
