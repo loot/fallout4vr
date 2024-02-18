@@ -545,7 +545,7 @@ plugins:
       - crc: 0x9B2A2AAC
         util: 'FO4Edit v4.0.3'
 
-###### Unofficial Patches ######
+###### Base Game Patches ######
   - name: 'UnofficialFallout4Patch.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/4526/' ]
     group: *fixesGroup
