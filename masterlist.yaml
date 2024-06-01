@@ -1383,6 +1383,12 @@ plugins:
         util: '[FO4Edit v4.0.4b](https://www.nexusmods.com/fallout4/mods/2737)'
         itm: 1
 
+  - name: 'Realistic Reverb and Ambiance.esp'
+    url:
+      - link: 'https://www.nexusmods.com/fallout4/mods/61140/'
+        name: 'Realistic Reverb and Ambience Overhaul - VR and FP'
+    req: [ 'Ambient Wasteland.esp' ]
+
   - name: 'Reverb and Ambiance Overhaul.esp'
     url: [ 'https://www.nexusmods.com/fallout4/mods/10189/' ]
     clean:
@@ -1416,12 +1422,6 @@ plugins:
     clean:
       - crc: 0xE86A8F90
         util: 'FO4Edit v4.0.3j (RC2 for 4.0.4)'
-
-  - name: 'Realistic Reverb and Ambiance.esp'
-    url:
-      - link: 'https://www.nexusmods.com/fallout4/mods/61140/'
-        name: 'Realistic Reverb and Ambience Overhaul - VR and FP'
-    after: [ 'Ambient Wasteland.esp' ]
 
 ###### AudioVisual - Weather & Lighting ######
   - name: 'EnhancedLightsandFX.esp'
